@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-surface-950 text-surface-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-600;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface-800/60 backdrop-blur-xl border border-white/5;
+  }
+
+  .glass-card {
+    @apply glass rounded-xl p-5 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-5 py-2.5 rounded-lg
+           transition-all duration-200 hover:shadow-glow-brand active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-700 hover:bg-surface-600 text-surface-100 font-medium px-5 py-2.5 rounded-lg
+           transition-all duration-200 border border-white/5 active:scale-[0.98];
+  }
+
+  .btn-danger {
+    @apply bg-loss/20 hover:bg-loss/30 text-loss-light font-medium px-5 py-2.5 rounded-lg
+           transition-all duration-200 border border-loss/20 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply hover:bg-white/5 text-surface-300 hover:text-surface-100 font-medium px-3 py-2 rounded-lg
+           transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full bg-surface-900/80 border border-white/10 rounded-lg px-4 py-3 text-surface-100
+           placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-brand-500/40
+           focus:border-brand-500/40 transition-all duration-200;
+  }
+
+  .badge-bullish {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
+           bg-profit/15 text-profit-light border border-profit/20;
+  }
+
+  .badge-bearish {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
+           bg-loss/15 text-loss-light border border-loss/20;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold
+           bg-warning/15 text-warning-light border border-warning/20;
+  }
+
+  .price-up {
+    @apply text-profit-light;
+  }
+
+  .price-down {
+    @apply text-loss-light;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+}
